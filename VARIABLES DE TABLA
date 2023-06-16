@@ -1,0 +1,58 @@
+ //eliminar tabla//
+ drop table #nombre
+ 
+ //TABLATEMPORAL//
+ INTO #TablaFactura
+ 
+ //DECLARAR TABLAS//
+		DECLARE @TablaVariable table(
+
+ccod_cia char(3),
+cdoc_serie char(6),
+cdoc_nro char(12) ,
+ccod_eje char(6) ,
+ccod_per char(6),
+ctipo_trans varchar(10),
+ctipo_doc varchar(10),
+ccond_pago varchar(10),
+ddoc_fch datetime,
+ddoc_fch_venc datetime,
+ccod_vend varchar(10),
+ccod_coa varchar(20),
+ccoa_dsc varchar(200),
+vglosa varchar(200),
+nimp_n_mof decimal(19,5),
+nimp_n_con decimal(19,5),
+nimp_i_mof decimal(19,5),
+nimp_i_con decimal(19,5),
+nimp_t_mof decimal(19,5),
+nimp_t_con decimal(19,5),
+ccod_mon char(2),
+cestado char(2)
+)
+
+insert into @TablaVariable
+select 
+ccod_cia,cdoc_serie,cdoc_nro,
+ccod_eje,ccod_per,ctipo_trans,
+ctipo_doc,ccond_pago,ddoc_fch,
+ddoc_fch_venc,ccod_vend,
+ccod_coa,ccoa_dsc,vglosa,
+nimp_n_mof,nimp_n_con,nimp_i_mof,
+nimp_i_con,nimp_t_mof,nimp_t_con,
+ccod_mon,cestado
+from fa_cabfact
+where ccod_eje='ej2023'
+
+
+SELECT * FROM @TablaVariable
+where ccod_per='ej2301'
+
+select ccod_per,count(*) from @TablaVariable
+group by ccod_per //SELECCCIONAR DATOS DE LA TABLA)
+
+
+
+
+//TABLA TEMPORAL//
+
